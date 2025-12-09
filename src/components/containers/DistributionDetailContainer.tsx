@@ -1,26 +1,27 @@
+// src/components/containers/DistributionDetailContainer.tsx
+
 'use client';
 
 import { useDistributionDetail } from '@/hooks';
-import { DistributionDetailView } from '../presentation/DistributionDetailView';
+import { DistributionDetailView } from '../presentation/detail/views/DistributionDetailView';
 
-export function DistributionDetailContainer({ id }: { id: string }) {
+/**
+ * Props para el DistributionDetailContainer
+ */
+interface DistributionDetailContainerProps {
+  /** ID de la distribución a mostrar */
+  id: string;
+}
+
+/**
+ * Container que maneja la lógica de obtención de datos para el detalle de una distribución.
+ * Delega toda la renderización al componente presentacional DistributionDetailView.
+ *
+ * @example
+ * <DistributionDetailContainer id="123" />
+ */
+export function DistributionDetailContainer({ id }: DistributionDetailContainerProps) {
   const { distribution, loading, error } = useDistributionDetail(id);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
-      </div>
-    );
-  }
-
-  if (error || !distribution) {
-    return (
-      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-        {error ? `Error: ${error.message}` : 'Distribution not found'}
-      </div>
-    );
-  }
-
-  return <DistributionDetailView distribution={distribution} />;
+  return <DistributionDetailView distribution={distribution} loading={loading} error={error} />;
 }

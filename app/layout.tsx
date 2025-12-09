@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { MSWProvider } from "@/components/providers/MSWProvider";
 import Link from "next/link";
+import { Text } from "@/components/ui/Text";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,41 +21,45 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased bg-gray-50`}>
-        <MSWProvider>
-          <div className="min-h-screen">
-            <nav className="bg-white shadow-sm">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                  <div className="flex">
+        <div className="min-h-screen">
+          <nav className="bg-white shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between h-16">
+                <div className="flex">
+                  <Link
+                    href="/"
+                    className="flex items-center"
+                  >
+                    <Text variant="h2" className="text-primary">
+                      Aid Distribution Dashboard
+                    </Text>
+                  </Link>
+                  <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                     <Link
                       href="/"
-                      className="flex items-center text-xl font-bold text-blue-600"
+                      className="inline-flex items-center px-1 pt-1 hover:text-primary"
                     >
-                      Aid Distribution Dashboard
-                    </Link>
-                    <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                      <Link
-                        href="/"
-                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 hover:text-blue-600"
-                      >
+                      <Text variant="label" className="text-gray-900">
                         Distributions
-                      </Link>
-                      <Link
-                        href="/charts"
-                        className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-blue-600"
-                      >
+                      </Text>
+                    </Link>
+                    <Link
+                      href="/charts"
+                      className="inline-flex items-center px-1 pt-1 hover:text-primary"
+                    >
+                      <Text variant="label" className="text-gray-500">
                         Charts
-                      </Link>
-                    </div>
+                      </Text>
+                    </Link>
                   </div>
                 </div>
               </div>
-            </nav>
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              {children}
-            </main>
-          </div>
-        </MSWProvider>
+            </div>
+          </nav>
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

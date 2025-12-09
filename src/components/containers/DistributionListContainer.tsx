@@ -1,27 +1,31 @@
 'use client';
 
 import { useDistributions } from '@/hooks';
-import { getUniqueRegions } from '@/api/mockData';
-import { DistributionTable } from '../presentation/DistributionTable';
-import { DistributionFilters } from '../presentation/DistributionFilters';
-import { Pagination } from '../presentation/Pagination';
+import { DistributionListView } from '../presentation/list/views/DistributionListView';
 
+/**
+ * Container que maneja la lógica de datos para la lista de distribuciones.
+ * Gestiona el fetching de datos, filtros y paginación.
+ * Delega toda la renderización al componente presentacional.
+ *
+ * @example
+ * <DistributionListContainer />
+ */
 export function DistributionListContainer() {
-  const { distributions, total, loading, error, page, pageSize, filters, setPage, setFilters } = useDistributions(10);
-
-  if (error) {
-    return (
-      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-        Error: {error.message}
-      </div>
-    );
-  }
+  const { distributions, total, loading, error, page, pageSize, filters, setPage, setFilters } =
+    useDistributions(10);
 
   return (
-    <div>
-      <DistributionFilters filters={filters} regions={getUniqueRegions()} onFilterChange={setFilters} />
-      <DistributionTable distributions={distributions} loading={loading} />
-      <Pagination currentPage={page} totalItems={total} pageSize={pageSize} onPageChange={setPage} />
-    </div>
+    <DistributionListView
+      distributions={distributions}
+      total={total}
+      loading={loading}
+      error={error}
+      page={page}
+      pageSize={pageSize}
+      filters={filters}
+      onPageChange={setPage}
+      onFilterChange={setFilters}
+    />
   );
 }

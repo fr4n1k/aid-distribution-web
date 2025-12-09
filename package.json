@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "apexcharts": "^5.3.6",
-    "msw": "^2.12.3",
     "next": "16.0.6",
     "react": "19.2.0",
     "react-apexcharts": "^1.9.0",
@@ -34,10 +33,5 @@
     "jest-environment-jsdom": "^30.2.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
   }
 }

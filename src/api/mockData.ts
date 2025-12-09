@@ -160,7 +160,17 @@ export const mockDistributions: Distribution[] = [
     ],
   },
 ];
+const STATUSES = ['all', 'Planned', 'In Progress', 'Completed', 'Cancelled'];
+export const statusOptions = STATUSES.map((status) => ({
+  value: status,
+  label: status === 'all' ? 'All Statuses' : status,
+}));
 
-export const getUniqueRegions = () => {
-  return [...new Set(mockDistributions.map(d => d.region))].sort();
+const getUniqueRegions = () => {
+  return [...new Set(mockDistributions.map((d) => d.region))].sort();
 };
+const regions = getUniqueRegions();
+export const regionOptions = [
+  { value: 'all', label: 'All Regions' },
+  ...regions.map((region) => ({ value: region, label: region })),
+];

@@ -1,6 +1,5 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
-import { DistributionFilters } from '@/components/presentation/DistributionFilters';
+import { DistributionFilters } from '@/components/presentation/list/DistributionFilters';
 import type { DistributionFilters as Filters } from '@/types';
 
 const mockRegions = ['West Nile', 'Eastern Province', 'Northern Region'];

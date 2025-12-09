@@ -34,5 +34,15 @@ export function useDistributions(pageSize: number = 10) {
     setPage(1);
   };
 
-  return { distributions, total, loading, error, page, pageSize, filters, setPage, setFilters: updateFilters };
+  return {
+    distributions,
+    total,
+    loading,
+    error,
+    page,
+    pageSize,
+    filters,
+    setPage,
+    setFilters: updateFilters,
+  };
 }

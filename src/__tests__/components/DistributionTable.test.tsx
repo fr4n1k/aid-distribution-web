@@ -1,7 +1,5 @@
-
-
 import { render, screen } from '@testing-library/react';
-import { DistributionTable } from '@/components/presentation/DistributionTable';
+import { DistributionTable } from '@/components/presentation/list/DistributionTable';
 import type { Distribution } from '@/types';
 
 const mockDistributions: Distribution[] = [

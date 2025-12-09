@@ -9,7 +9,13 @@
       "Bash(npm test:*)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Bash(npx tsc --noEmit)"
+      "Bash(npx tsc --noEmit)",
+      "Bash(if exist srcapihandlers.ts del /f srcapihandlers.ts)",
+      "Bash(if exist srcapimsw.ts del /f srcapimsw.ts)",
+      "Bash(if exist srcapimsw-lifecycle.ts del /f srcapimsw-lifecycle.ts)",
+      "Bash(if exist srccomponentsprovidersMSWProvider.tsx del /f srccomponentsprovidersMSWProvider.tsx)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
